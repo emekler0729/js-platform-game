@@ -121,7 +121,7 @@ function DOMDisplay(parent, level) {
     this.level = level;
 
     this.wrap.appendChild(this.drawBackground());
-    this.wrap.appendChild(this.drawStatus())
+    this.wrap.appendChild(this.drawStatus());
     this.actorLayer = null;
     this.drawFrame();
 }
@@ -629,5 +629,6 @@ function flipHorizontally(context, around) {
     context.translate(-around, 0);
 }
 
-CanvasDisplay.prototype.createOverlay = DOMDisplay.prototype.createOverlay;
+// @TODO Fix Overlay Displays with CanvasDisplay method.
+CanvasDisplay.prototype.createOverlay = function() {};
 
