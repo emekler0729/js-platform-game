@@ -630,5 +630,13 @@ function flipHorizontally(context, around) {
 }
 
 // @TODO Fix Overlay Displays with CanvasDisplay method.
-CanvasDisplay.prototype.createOverlay = function() {};
+CanvasDisplay.prototype.createOverlay = function() {
+    return {
+        draw: function(text) {
+            alert(text);
+        },
+
+        remove: function() {}
+    };
+};
 
