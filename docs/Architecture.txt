@@ -1,0 +1,82 @@
+Global Data Variables
+actorChars;		 // symbol, constructor pairs.
+scale;			 // pixels per unit
+maxStep;		 // maximum timeslice
+arrowCodes;		 // map of arrow key keycodes
+arrows;			 // current key state
+
+Global Config Variables
+wobbleSpeed;	 // coin wobble speed
+wobbleDist;		 // coin wobble distance
+playerXSpeed;	 // player horizontal speed
+gravity;		 // gravity speed
+jumpSpeed;		 // jump speed
+lives; 			 // number of player lives
+
+Global Functions
+newElement(name, className);
+trackKeys(codes);
+runAnimation(frameFunction);
+runLevel(level, Display, andThen);
+runGame(plans, Display);
+
+Level(plan) {
+	this.width;
+	this.height;
+	this.grid;
+	this.actors;
+	this.player;
+	this.status;
+	this.finishDelay;
+}
+Level.prototype.isFinished();
+Level.prototype.obstacleAt(pos, size);
+Level.prototype.actorAt(actor);
+Level.prototype.animate(step, keys);
+Level.prototype.playerTouched(type, actor);
+
+Vector(x, y) {
+	this.x;
+	this.y;
+}
+Vector.prototype.plus(other);
+Vector.prototype.times(factor);
+
+Player(pos) {
+	this.type = "player";
+	this.pos;
+	this.size;
+	this.speed;
+}
+Player.prototype.moveX(step, level, keys);
+Player.prototype.moveY(step, level, keys);
+Player.prototype.act(step, level, keys);
+
+
+Lava(pos, ch) {
+	this.type = "lava";
+	this.pos;
+	this.size;
+}
+Lava.prototype.act(step, level);
+
+Coin(pos) {
+	this.type = "coin";
+	this.basePos;
+	this.pos;
+	this.size;
+	this.wobble;
+}
+Coin.prototype.act(step);
+
+DOMDisplay(parent, level) {
+	this.wrap;
+	this.level;
+	this.actorLayer;
+}
+DOMDisplay.prototype.drawBackground();
+DOMDisplay.prototype.drawActors();
+DOMDisplay.prototype.drawFrame();
+DOMDisplay.prototype.scrollPlayerIntoView();
+DOMDisplay.prototype.clear();
+		
